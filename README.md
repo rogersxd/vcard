@@ -2,6 +2,7 @@
 
 [![Latest Stable Version](https://img.shields.io/badge/packagist-1.0.0-blue.svg)](https://packagist.org/packages/rogersxd/vcard)
 [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/rogersxd/vcard/blob/master/LICENSE)
+[![Build Status](https://scrutinizer-ci.com/g/rogersxd/vcard/badges/build.png?b=master)](https://scrutinizer-ci.com/g/rogersxd/vcard/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rogersxd/vcard/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rogersxd/vcard/?branch=master)
 
 Latest Version 1.0.0
