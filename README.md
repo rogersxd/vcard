@@ -1,11 +1,9 @@
 # VCard PHP library
 
-[![Latest Stable Version](https://img.shields.io/badge/packagist-1.0.0-blue.svg)](https://packagist.org/packages/rogersxd/vcard)
-[![License](http://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/rogersxd/vcard/blob/master/LICENSE)
+[![Latest Stable Version](https://img.shields.io/badge/packagist-v1.0.1-blue.svg)](https://packagist.org/packages/rogersxd/vcard)
+[![License](http://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/rogersxd/vcard/master/LICENSE)
 [![Build Status](https://scrutinizer-ci.com/g/rogersxd/vcard/badges/build.png?b=master)](https://scrutinizer-ci.com/g/rogersxd/vcard/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rogersxd/vcard/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rogersxd/vcard/?branch=master)
-
-Latest Version 1.0.0
 
 
 VCard PHP library. Only VCF files.
@@ -33,18 +31,22 @@ $firstName = 'Rogers';
 $additional = '';
 $prefix = '';
 $suffix = '';
+$fullName = true;
 
 $vcard->addnames(
         $lastName, 
         $firstName, 
         $additional, 
         $prefix, 
-        $suffix
+        $suffix,
+        $fullName
 );
 
 $vcard->addPhone('+5551999999999', 'CELL');
 
 $vcard->addPhone('+555133333333', 'HOME');
+
+$vcard->addJobtitle('Banking');
 
 $vcard->addRole('Developer');
 
@@ -57,6 +59,8 @@ $vcard->addUrl('http://rogerscorrea.wordpress.com');
 $vcard->addUrl('https://github.com/rogersxd');
 
 $vcard->addNote('CUSTOM-NOTE: TEST VCARD');
+
+$vcard->addBirthday('YYYY-MM-DD');
 
 $name = '';
 $extended = '';
@@ -110,7 +114,7 @@ $vcard->addSocialProfile(
     $typeSocialProfile4
 );
 
-$vcard->addCustom('X-CUSTOM(CHARSET=UTF-8,ENCODING=QUOTED-PRINTABLE,Custom1):1');
+$vcard->addCustom('X-CUSTOM(CHARSET=UTF-8,ENCODING=QUOTED-PRINTABLE,Custom1)','1');
 
 $vcard->setSavePath(__DIR__. '/vcf/');
 
