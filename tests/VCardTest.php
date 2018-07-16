@@ -48,6 +48,7 @@ class VCardTest extends PHPUnit_Framework_TestCase{
         $additional = '';
         $prefix = '';
         $suffix = '';
+        $fullName = true;
 
         $this->assertEquals(
             $this->vcard, 
@@ -56,7 +57,8 @@ class VCardTest extends PHPUnit_Framework_TestCase{
                 $firstName, 
                 $additional, 
                 $prefix, 
-                $suffix
+                $suffix,
+                $fullName
             )
         );
     }
@@ -189,6 +191,25 @@ class VCardTest extends PHPUnit_Framework_TestCase{
         );
     }
 
+    public function testAddBirthday()
+    {
+        $this->assertEquals(
+            $this->vcard, 
+            $this->vcard->addBirthday(
+                '1991-11-11'
+            )
+        );
+    }
+
+    public function testAddJobtitle()
+    {
+        $this->assertEquals(
+            $this->vcard, 
+            $this->vcard->addJobtitle(
+                'Administrative'
+            )
+        );
+    }
 
     public function testAddPhoto()
     {
@@ -267,20 +288,19 @@ class VCardTest extends PHPUnit_Framework_TestCase{
 
     public function testAddCustom()
     {
-        $custom1 = 'X-CUSTOM(CHARSET=UTF-8,ENCODING=QUOTED-PRINTABLE,Custom1):1';
-        $custom2 = 'X-CUSTOM(CHARSET=UTF-8,ENCODING=QUOTED-PRINTABLE,Custom2):2';
-
         $this->assertEquals(
             $this->vcard, 
             $this->vcard->addCustom(
-                $custom1
+                'X-CUSTOM(CHARSET=UTF-8,ENCODING=QUOTED-PRINTABLE,Custom1)',
+                'custom-info1'
             )
         );
 
         $this->assertEquals(
             $this->vcard, 
             $this->vcard->addCustom(
-                $custom2
+                'X-CUSTOM(CHARSET=UTF-8,ENCODING=QUOTED-PRINTABLE,Custom2)',
+                'custom-info2'
             )
         );
     }
@@ -373,7 +393,10 @@ class VCardTest extends PHPUnit_Framework_TestCase{
             $typeSocialProfile4
         );
 
-        $vcard->addCustom('X-CUSTOM(CHARSET=UTF-8,ENCODING=QUOTED-PRINTABLE,Custom1):1');
+        $vcard->addCustom(
+            'X-CUSTOM(CHARSET=UTF-8,ENCODING=QUOTED-PRINTABLE,Custom1)', 
+            'custom-info'
+        );
 
         $vcard->setSavePath(__DIR__. '/vcf/');
 

@@ -92,7 +92,8 @@ class VCard{
         $firstName = '',
         $additional = '',
         $prefix = '',
-        $suffix = ''
+        $suffix = '',
+        $fullName = false
     ){
         // set property
         $property = $lastName . ';' . $firstName . ';' . $additional . ';' . $prefix . ';' . $suffix;
@@ -102,6 +103,22 @@ class VCard{
             $property
         );
 
+        if($fullName === true) {
+            $values = array_filter([
+                $prefix,
+                $firstName,
+                $additional,
+                $lastName,
+                $suffix,
+            ]);
+
+            $this->setProperty(
+                'fullname',
+                'FN' . $this->getCharsetInVCard(),
+                trim(implode(' ', $values))
+            );
+        }
+
         return $this;
     }
 
@@ -109,7 +126,7 @@ class VCard{
     * Add phone number
     *
     * @param  string $number
-    * @param  string [optional] $type
+    * @param  string $type
     * TYPES = PREF | WORK | HOME | VOICE | FAX | MSG |
     * CELL | PAGER | BBS | CAR | MODEM | ISDN | VIDEO
     * @return $this
@@ -118,7 +135,7 @@ class VCard{
     {
         $this->setProperty(
             'phone',
-            'TEL' . (($type != '') ? ';' . $type : ''),
+            $type,
             $number
         );
 
@@ -128,7 +145,7 @@ class VCard{
     /**
     * Add role
     *
-    * @param  string $role.
+    * @param  string $role
     * @return $this
     */
     public function addRole($role)
@@ -139,6 +156,38 @@ class VCard{
             $role
         );
 
+        return $this;
+    }
+
+    /**
+    * Add jobtitle
+    *
+    * @param  string $jobtitle
+    * @return $this
+    */
+    public function addJobtitle($jobtitle)
+    {
+        $this->setProperty(
+            'jobtitle',
+            'TITLE' . $this->getCharsetInVCard(),
+            $jobtitle
+        );
+        return $this;
+    }
+
+    /**
+    * Add birthday
+    *
+    * @param  string $date - YYYY-MM-DD
+    * @return $this
+    */
+    public function addBirthday($date)
+    {
+        $this->setProperty(
+            'birthday',
+            'BDAY',
+            $date
+        );
         return $this;
     }
 
@@ -332,14 +381,15 @@ class VCard{
     /**
     * Add custom
     *
-    * @param  string [optional] $custom
+    * @param  string $param
+    * @param  string $custom
     * @return $this
     */
-    public function addCustom($custom)
+    public function addCustom($param, $custom)
     {
         $this->setProperty(
             'custom',
-            '',
+            $param,
             $custom
         );
 
