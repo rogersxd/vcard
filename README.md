@@ -1,6 +1,6 @@
 # VCard PHP library
 
-[![Latest Stable Version](https://img.shields.io/badge/packagist-v1.0.1-blue.svg)](https://packagist.org/packages/rogersxd/vcard)
+[![Latest Stable Version](https://img.shields.io/badge/packagist-v1.0.2-blue.svg)](https://packagist.org/packages/rogersxd/vcard)
 [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/rogersxd/vcard/master/LICENSE)
 [![Build Status](https://scrutinizer-ci.com/g/rogersxd/vcard/badges/build.png?b=master)](https://scrutinizer-ci.com/g/rogersxd/vcard/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rogersxd/vcard/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rogersxd/vcard/?branch=master)
