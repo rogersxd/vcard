@@ -135,7 +135,7 @@ class VCard{
     {
         $this->setProperty(
             'phone',
-            $type,
+            'TEL' . (($type != '') ? ';' . $type : ''),
             $number
         );
 
